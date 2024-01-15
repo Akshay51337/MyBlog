@@ -1,15 +1,11 @@
 package com.myblog.controller;
 
+import com.myblog.entity.Post;
 import com.myblog.payload.PostDto;
 import com.myblog.service.PostService;
-import com.myblog.service.impl.PostServiceImpl;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/posts")
@@ -23,5 +19,11 @@ private PostService postService;
     public ResponseEntity<PostDto> createPost(@RequestBody PostDto postDto){
         PostDto post = postService.createPost(postDto);
         return new ResponseEntity<>(post, HttpStatus.CREATED);
+    }
+    @GetMapping
+    public ResponseEntity<?>getData(@RequestParam long id){
+
+        PostDto data = postService.getData(id);
+        return new ResponseEntity<>(data,HttpStatus.OK);
     }
 }
