@@ -12,7 +12,7 @@ import java.util.Date;
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
-@ExceptionHandler
+@ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity <ErrorDetails> HandlerResourceNotFoundException(ResourceNotFoundException e, WebRequest webRequest){
         ErrorDetails errorDetails = new ErrorDetails(e.getMessage(), new Date(), webRequest.getDescription(true));
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -3,14 +3,14 @@ package com.myblog.payload;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.Date;
+import org.springframework.http.ResponseEntity;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ErrorDetails {
+public class CommentDto {
 
-    private String message;
-    private Date date;
-    private String uri;
+        private long id;
+        private String text;
+        private String email;
+
 }
